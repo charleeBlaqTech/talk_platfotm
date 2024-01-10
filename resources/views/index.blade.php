@@ -13,7 +13,7 @@
         @auth()
         <div class="alert w-full fixed top-18">
             @if (session()->has('success'))
-            <p class="fixed top-12 bg-green-400 text-white w-[100%] text-center">{{session('success')}}</p>
+            <p class="fixed top-14 py-4 my-8 bg-green-400 text-white w-[100%] text-center">{{session('success')}}</p>
             {{-- <img src="{{Auth::user()->getImage()}}" alt="image"> --}}
             <img src="{{asset('storage'. '/' . Auth::user()->image)}}" alt="image">
             @endif

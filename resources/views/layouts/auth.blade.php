@@ -7,9 +7,9 @@
     <title>{{config('app.name')}}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="grid place-items-center w-[100%] px-4 h-[100vh] bg-green-200">
+<body class="grid place-items-center w-[100%] h-full bg-green-200 px-4 pt-14">
     @include('includes._header')
-    <main class="container w-[100%] flex justify-center align-middle">
+    <main class="w-[100%] grid place-items-center ">
         @yield('content')
     </main>
 </body>

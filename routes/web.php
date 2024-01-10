@@ -19,15 +19,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {return view('index');})->name('home')->middleware('auth');
 
 
+Route::group(['prefix' => '/register'], function () {
+
+    Route::get('', [RegisterController::class, 'form'])->name('register.create')->middleware('guest');
+    Route::post('', [RegisterController::class, 'register'])->name('register.store')->middleware('guest');
+});
+
+
 Route::group(['prefix' => '/login'], function () {
     Route::get('', [LoginController::class, "form"])->name('login.create');
     Route::post('', [LoginController::class, 'login'])->name('login.store');
 });
 
-Route::group(['prefix' => '/register'], function () {
-
-    Route::get('', [RegisterController::class, 'form'])->name('register.create');
-    Route::post('', [RegisterController::class, 'register'])->name('register.store');
-});
-
-Route::delete('/logout', [LoginController::class, 'destroy'])->name('logout');
+Route::get('/logout', [LoginController::class, 'destroy'])->name('login.destroy')->middleware('auth');

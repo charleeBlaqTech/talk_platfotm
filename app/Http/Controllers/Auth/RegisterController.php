@@ -18,7 +18,7 @@ class RegisterController extends Controller
             'fullname' => "required|",
             'email' => "required|email|unique:users,email",
             'password' => 'required|min:8|confirmed',
-            'image' => 'image',
+            // 'image' => 'image',
         ]);
 
         // $validated = [
@@ -40,7 +40,7 @@ class RegisterController extends Controller
                 'name' => $validated["fullname"],
                 'email' => $validated['email'],
                 'password' => Hash::make($validated['password']),
-                'image' => $validated['image']
+                // 'image' => $validated['image']
 
             ]);
             return redirect()->route('home')->with('success', 'successfully created user');

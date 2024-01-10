@@ -22,13 +22,8 @@ class LoginController extends Controller
             request()->session()->regenerate();
             return redirect()->route('home')->with('success', 'successfully loggedin');
         }else{
-            return redirect()->route('login.create')->withErrors([
-                'email'=> 'user wih this email not found',
-                'password' => 'password/missmatch'
-            ]);
+            return redirect()->route('login.create')->with('error', "User with this email not found");
         }
-        // return redirect()->route('login.create')->with('error', 'user not found');
-
 
     }
 
@@ -37,6 +32,6 @@ class LoginController extends Controller
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 
-        return redirect()->route('login.create')->with('error', 'you logged out');
+        return redirect()->route('login.create')->with('success', 'you logged out successfully');
     }
 }
